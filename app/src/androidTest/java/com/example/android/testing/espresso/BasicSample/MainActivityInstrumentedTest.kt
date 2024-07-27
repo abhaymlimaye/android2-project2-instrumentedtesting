@@ -44,6 +44,15 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun noTextAndChangeText() {
+        ActivityScenario.launch(MainActivity::class.java)
+        onView(withId(R.id.changeTextBt))
+            .perform(click())
+        onView(withId(R.id.textToBeChanged))
+            .check(matches(withText("")))
+    }
+
+    @Test
     fun enterAbcdefAndChangeText() {
         ActivityScenario.launch(MainActivity::class.java)
         onView(withId(R.id.editTextUserInput))
